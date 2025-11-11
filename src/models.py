@@ -7,6 +7,8 @@ class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     email: str = Field(index=True, nullable=False)
     name: Optional[str] = None
+    hashed_password: Optional[str] = None
+    role: str = Field(default="student")
 
     registrations: List["Registration"] = Relationship(back_populates="user")
 
