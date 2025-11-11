@@ -18,6 +18,7 @@ from sqlmodel import Session, select
 
 from .db import engine, init_db, get_session, seed_data
 from .models import Activity, User, Registration
+from .auth import router as auth_router
 
 
 app = FastAPI(title="Mergington High School API",
@@ -33,6 +34,9 @@ app.mount("/static", StaticFiles(directory=os.path.join(Path(__file__).parent,
 # Initialize the database and seed sample data
 init_db()
 seed_data()
+
+# include auth routes
+app.include_router(auth_router, prefix="/auth")
 
 
 @app.get("/")
