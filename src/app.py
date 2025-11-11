@@ -109,4 +109,3 @@ def unregister_from_activity(activity_name: str, email: str, session: Session = 
     session.delete(reg)
     session.commit()
     return {"message": f"Unregistered {email} from {activity_name}"}
-
